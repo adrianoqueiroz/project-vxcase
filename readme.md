@@ -1,29 +1,54 @@
-# Avaliação para vaga de DEV VX CASE
+# DEV VX CASE
 
 ## Stack de Tecnologia:  
 Laravel  
 Vue/Vuex  
 Bulma  
 
-## Instalação
- 1. Clone este repositório  
- ` git clone https://github.com/eufelpsdev/avaliacao-vx-backend.git`  
- `cd sale-system`  
- 2. Instale as dependencias  
- ` composer install`  
+ ## Instalação
+ 1. Instale o Docker  
+ https://docs.docker.com/engine/install/
+ 2. Clone o repositório e acesse o diretório do projeto 
+ ` git clone https://github.com/adrianoqueiroz/project-vxcase.git`  
+ `cd project-vxcase`  
+  
  3. Configure o ambiente  
- `cp .env.example .env`  
- `php artisan key:generate`  
-    - Popule o banco de dados mysql  
- `php artisan migrate --seed`  
- 4. Rode o servidor  
- `php artisan serve`  
+ `cp .env.example .env`
+ (defina a senha do mysql)  
 
+4. Inicialize os containers  
+ `docker-compose up -d`
 
-## Respondendo a prova
+5. Instale as dependências  
+ ` docker exec -ti vxcase-app composer install` 
 
-- Para realizar a avaliação, siga os passos acima. 
-- Após conseguir colocar o projeto para rodar, realize as tarefas disponibilizadas na aba (issues). 
-- Não é obrigatrio responder todas as atividades, quanto mais atividades você responder, melhor será avaliado.
-- Após ter respondido as issues, disponibilize o projeto no seu github contendo essas atualizações.
-- Informe-nos quais issues você realizou.
+6. Gere a APP_KEY  
+ `docker exec -ti vxcase-app php artisan key:generate`  
+
+7. Popule o banco de dados mysql  
+ `docker exec -ti vxcase-app php artisan migrate --seed`  
+ <!-- 4. Rode o servidor  
+ `docker exec -ti vxcase-app php artisan serve`   -->
+ 
+8. Well Done! Development Server URL  
+ http://localhost:8000
+
+ ## Issues resolvidas:
+* Adicionar Docker ao projeto;
+
+* Organizar os Models em uma pasta;
+
+* Implementar FormRequest nos Controllers
+
+* Implementar o conceito Repositories no projeto
+
+* Criar um command para inserir um produto via terminal
+
+   Params:  
+   nome(required), reference (optional), price (default 0), delivery_days(default 15);
+
+   Exemplo com todos os parâmetros:  
+   `php artisan product:create "Produto VX-01" "RFVX-001" "100" "15"`
+
+   Exemplo com 01 parametro:  
+   `php artisan product:create "Produto VX-02"`
