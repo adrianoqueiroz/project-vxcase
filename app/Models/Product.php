@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Product extends Model
 {
@@ -18,5 +19,10 @@ class Product extends Model
     public function sales()
     {
         return $this->belongsToMany('App\Models\Sale');
+    }
+
+    public function routeNotificationForSlack($notification)
+    {
+        return $this->slack_webhook_url;
     }
 }

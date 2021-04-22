@@ -8,7 +8,7 @@ Bulma
  ## Instalação
  1. Instale o Docker  
  https://docs.docker.com/engine/install/
- 2. Clone o repositório e acesse o diretório do projeto 
+ 2. Clone o repositório e acesse o diretório do projeto  
  ` git clone https://github.com/adrianoqueiroz/project-vxcase.git`  
  `cd project-vxcase`  
   
@@ -21,6 +21,7 @@ Bulma
 
 5. Instale as dependências  
  ` docker exec -ti vxcase-app composer install` 
+ <!-- ` docker exec -ti vxcase-app composer require guzzlehttp/guzzle`  -->
 
 6. Gere a APP_KEY  
  `docker exec -ti vxcase-app php artisan key:generate`  
@@ -52,3 +53,5 @@ Bulma
 
    Exemplo com 01 parametro:  
    `php artisan product:create "Produto VX-02"`
+
+* Iniciada a criação de notificação para Slack (não finalizado)
